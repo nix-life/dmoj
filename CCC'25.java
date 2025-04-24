@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Main {
+    public static String processCode(String code) {
+        StringBuilder letters = new StringBuilder();
+        StringBuilder number = new StringBuilder();
+        int sum = 0;
+        boolean isNegative = false;
+
+        for (char c : code.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                letters.append(c);
+            }
+        }
+
+        for (int i = 0; i < code.length(); i++) {
+            char c = code.charAt(i);
+            if (c == '-') {
+                isNegative = true;
+                continue;
+            }
+            if (Character.isDigit(c)) {
+                if (isNegative) {
+                    number.append('-');
+                    isNegative = false;
+                }
+                number.append(c);
+                i++;
+                while (i < code.length() && Character.isDigit(code.charAt(i))) {
+                    number.append(code.charAt(i));
+                    i++;
+                }
+                if (number.length() > 0) {
+                    sum += Integer.parseInt(number.toString());
+                    number.setLength(0);
+                }
+                i--;
+            }
+        }
+
+        return letters.toString() + sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine(); 
+
+        for (int i = 0; i < n; i++) {
+            String code = sc.nextLine();
+            System.out.println(processCode(code));
+        }
+    }
+}
