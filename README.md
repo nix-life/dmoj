@@ -1,2 +1,2 @@
-# CCC
-ccc solutions
+# dmoj
+dmoj solutions
