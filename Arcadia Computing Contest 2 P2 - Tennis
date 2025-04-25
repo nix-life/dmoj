@@ -1,0 +1,57 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        int n = readInt();
+        int k = readInt();
+        String l = next();
+        int s = 0;
+        int c = 0;
+        for (int i = 0; i < n; i++) {
+            char serve = l.charAt(i);
+            if (serve=='P' || serve=='S') {
+                if (c==k) {
+                    System.out.println("NO");
+                    return;
+                }
+                if (serve=='P') s+=2;
+                else s++;
+                c++;
+                if (serve=='P'&&i+1 < n&&l.charAt(i+1)=='P') {
+                    System.out.println("NO");
+                    return;
+                }
+            } else if (serve=='F') {
+                c = 0; 
+            } else {
+                System.out.println("NO");
+                return;
+            }
+        }
+        System.out.println("YES");
+        System.out.println(s);
+    } static String next() throws IOException {
+        while (st == null || !st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong() throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter() throws IOException {
+        return next().charAt(0);
+    }
+    static String readLine() throws IOException {
+        return br.readLine().trim();
+    }
+}
