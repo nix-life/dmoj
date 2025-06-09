@@ -4,15 +4,11 @@ public class Main {
    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
    static StringTokenizer st;
    public static void main(String[] args) throws IOException {
-	   int d = readInt();
-	   int e = readInt();
-	   for (int i = 0; i < e; i++) {
-		   char x = readChar();
-		   int n = readInt();
-		   if (x=='+') d+=n;
-		   else d-=n;
-	   }
-	   System.out.println(d);
+	   int n = readInt();
+	   int m = readInt();
+	   int k = readInt();
+	   if (k*m<n) System.out.println("no");
+	   else System.out.println("yes");
    } static String next() throws IOException {
        while (st == null || ! st.hasMoreTokens())
            st = new StringTokenizer(br.readLine().trim());
