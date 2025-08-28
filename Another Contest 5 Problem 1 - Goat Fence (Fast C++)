@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+using namespace std;
+int main() {
+    string line;
+    getline(cin, line);
+    istringstream iss(line);
+    string token;
+    int num;
+    iss >> num;
+    cout << (num * 2 + 2) << endl;
+    return 0;
+}
