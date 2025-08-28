@@ -1,0 +1,26 @@
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String[] args) {
+	        
+    Scanner sc = new Scanner(System.in);
+				int target = Integer.parseInt(sc.nextLine());
+				int initial = Integer.parseInt(sc.nextLine());
+				int spread = Integer.parseInt(sc.nextLine());
+				int day = 0;
+				int totalInfected = initial;
+				
+				if (initial == target) {
+					System.out.println(1);
+				} else {
+					while (totalInfected <= target) {
+						day++;
+						totalInfected += (Math.pow(spread, day) * initial);
+					}
+					System.out.println(day);
+					sc.close();
+				}
+
+			}
+
+		}
