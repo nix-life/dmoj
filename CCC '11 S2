@@ -1,0 +1,22 @@
+import java.util.*;
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int count = sc.nextInt();
+    String[] arr = new String[count];
+    String[] arr2 = new String[count];
+    int total = 0;
+    for (int i = 0; i < count; i++) {
+      arr[i] = sc.next();
+    }
+    for (int i = 0; i < count; i++) {
+      arr2[i] = sc.next();
+    }
+    for (int i = 0; i < count; i++) {
+      if (arr[i].equals(arr2[i])) {
+        total++;
+      }
+    }
+    System.out.println(total);
+  }
+}
