@@ -1,0 +1,47 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+ 
+    public static void main(String[] args) throws IOException{
+        String[] str = readLine().split("x");
+        int[] arr = new int[str.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = Integer.parseInt(str[i]);
+        }
+        Arrays.sort(arr);
+        String out = "";
+        for (int i = 0; i < arr.length; i++) {
+            out+=arr[i];
+            if (i != arr.length - 1) {
+                out+="x";
+            } 
+        }
+        System.out.println(out);
+        long out2 = 1;
+        for (int i = 0; i < arr.length; i++) {
+            out2*=arr[i];
+        }
+        System.out.println(out2);
+    } static String next () throws IOException {
+        while (st == null || ! st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong () throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt () throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble () throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter () throws IOException {
+        return next().charAt(0);
+    }  
+    static String readLine () throws IOException {
+        return br.readLine().trim();
+    }
+}
