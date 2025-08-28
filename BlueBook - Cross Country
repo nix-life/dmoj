@@ -1,0 +1,35 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    public static void main(String[] args) throws IOException{
+        String s = next();
+        if (s.equals("MG")) System.out.println("midget girls");
+        else if (s.equals("MB")) System.out.println("midget boys");
+        else if (s.equals("JG")) System.out.println("junior girls");
+        else if (s.equals("JB")) System.out.println("junior boys");
+        else if (s.equals("SG")) System.out.println("senior girls");
+        else if (s.equals("SB")) System.out.println("senior boys");
+        else System.out.println("inavlid code");
+    } static String next () throws IOException {
+        while (st == null || ! st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong () throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt () throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble () throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter () throws IOException {
+        return next().charAt(0);
+    }  
+    static String readLine () throws IOException {
+        return br.readLine().trim();
+    }
+}
