@@ -1,0 +1,54 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static final long INF = Long.MAX_VALUE / 4;
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int R = sc.nextInt();
+        int C = sc.nextInt();
+        long M = sc.nextLong(); 
+
+        long[] cur = new long[C];
+        long[] next = new long[C];
+
+        long base = 0L;
+        fillRowCosts(cur, C, M, base); 
+
+        for (int r = 2; r <= R; r++) {
+            base = (base + C) % M;
+            fillRowCosts(next, C, M, base); 
+            long left, mid, right;
+            mid = cur[0];
+            right = (C >= 2) ? cur[1] : INF;
+            next[0] += Math.min(mid, right);
+            for (int c = 1; c <= C - 2; c++) {
+                left = cur[c - 1];
+                mid  = cur[c];
+                right= cur[c + 1];
+                long best = Math.min(mid, Math.min(left, right));
+                next[c] += best;
+            }
+
+            if (C >= 2) {
+                left = cur[C - 2];
+                mid  = cur[C - 1];
+                next[C - 1] += Math.min(mid, left);
+            }
+            long[] tmp = cur; cur = next; next = tmp;
+        }
+        long ans = INF;
+        for (int c = 0; c < C; c++) ans = Math.min(ans, cur[c]);
+
+        System.out.println(ans);
+    }
+    static void fillRowCosts(long[] arr, int C, long M, long base) {
+        long v = (base % M) + 1; 
+        for (int c = 0; c < C; c++) {
+            arr[c] = v;
+            v++;
+            if (v > M) v = 1;
+        }
+    }
+}
