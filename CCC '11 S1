@@ -1,0 +1,41 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    public static void main(String[] args) throws IOException {
+        int n = readInt();
+        int t = 0;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            String y = readLine().toLowerCase();
+            for (int j = 0; j < y.length(); j++) {
+                if (y.charAt(j) == 's') s++;
+                else if (y.charAt(j) == 't') t++;
+            }
+        }
+        if (t > s) System.out.println("English");
+        else if (s < t) System.out.println("French");
+        else System.out.println("French");
+    } 
+    static String next() throws IOException {
+        while (st == null || !st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong() throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter() throws IOException {
+        return next().charAt(0);
+    }
+    static String readLine() throws IOException {
+        return br.readLine().trim();
+    }
+}
