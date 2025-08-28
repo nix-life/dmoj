@@ -1,0 +1,38 @@
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		char[] arr = new char[count];
+		int[] arr2 = new int[7];
+		for (int i = 0; i < count; i++) {
+			arr[i] = sc.next().charAt(0);
+			if ((arr[i] == 'A')) {
+				arr2[0]++;
+			}
+			else if ((arr[i] == 'B')) {
+				arr2[1]++;
+			}
+			else if((arr[i] == 'C')) {
+				arr2[2]++;
+			}
+			else if ((arr[i] == 'D')) {
+				arr2[3]++;
+			}
+			else if ((arr[i] == 'E')) {
+				arr2[4]++;
+			}
+			else if ((arr[i] == 'F')) {
+				arr2[5]++;
+			}
+			else {
+				arr2[6]++;
+			}
+		}
+		for (int i = 0; i < 7; i++) {
+			System.out.println(arr2[i]);
+		}
+		sc.close();
+	}
+}
