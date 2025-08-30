@@ -1,0 +1,33 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        int n = readInt();
+        int[] x = new int[n];
+        for (int i = 0; i < n; i++) {
+            x[i] = readInt();
+        }
+        int total = 1691600;
+        int[] y = {100, 500, 1000, 5000, 10000, 25000, 50000, 100000, 500000, 1000000};
+        for (int i = 0; i < n; i++) {
+            total-=y[x[i]-1];
+        }
+        int offer = readInt();
+        total/=(10-n);
+        if (total<=offer) System.out.println("deal");
+        else System.out.println("no deal");
+    } static String next() throws IOException {
+        while (st == null || !st.hasMoreTokens()) {
+            st = new StringTokenizer(br.readLine().trim());
+        }
+        return st.nextToken();
+    }
+
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+}
