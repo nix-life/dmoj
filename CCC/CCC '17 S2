@@ -1,0 +1,60 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        int n = readInt();
+        int[] x = new int[n];
+        for (int i = 0; i < n; i++) {
+            x[i] = readInt();
+        }
+        Arrays.sort(x);
+
+        int lowCount = (n + 1) / 2; 
+        int highCount = n / 2;       
+
+        int[] low = new int[lowCount];
+        int[] high = new int[highCount];
+
+        for (int i = 0; i < lowCount; i++) {
+            low[i] = x[i];
+        }
+        for (int i = 0; i < highCount; i++) {
+            high[i] = x[lowCount + i];
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < highCount; i++) {
+            sb.append(low[lowCount - 1 - i]).append(" ").append(high[i]).append(" ");
+        }
+        if (lowCount > highCount) {
+            sb.append(low[0]);
+        } else {
+            sb.setLength(sb.length() - 1);
+        }
+
+        System.out.println(sb.toString());
+    } static String next () throws IOException {
+        while (st == null || ! st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong () throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt () throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble () throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter () throws IOException {
+        return next().charAt(0);
+    }  
+    static String readLine () throws IOException {
+        return br.readLine().trim();
+    }
+}
