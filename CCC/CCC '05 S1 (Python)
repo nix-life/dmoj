@@ -1,0 +1,27 @@
+n = int(input())
+
+for i in range(n):
+    s = input()
+    x = ''
+    for j in range(len(s)):
+        if s[j].isdigit():
+                x = x + s[j]
+        elif s[j] == '-':
+            continue
+        elif s[j] == 'A' or s[j] == 'B' or s[j] == 'C':
+            x = x + '2'
+        elif s[j] == 'D' or s[j] == 'E' or s[j] == 'F':
+            x = x + '3'
+        elif s[j] == 'G' or s[j] == 'H' or s[j] == 'I':
+            x = x + '4'
+        elif s[j] == 'J' or s[j] == 'K' or s[j] == 'L':
+            x = x + '5'
+        elif s[j] == 'M' or s[j] == 'N' or s[j] == 'O':
+            x = x + '6'
+        elif s[j] == 'P' or s[j] == 'Q' or s[j] == 'R' or s[j] == 'S':
+            x = x + '7'
+        elif s[j] == 'T' or s[j] == 'U' or s[j] ==  'V':
+            x = x + '8'
+        elif s[j] == 'W' or s[j] == 'X' or s[j] == 'Y' or s[j] == 'Z':
+            x = x + '9'
+    print(x[0]+x[1]+x[2]+'-'+x[3]+x[4]+x[5]+'-'+x[6]+x[7]+x[8]+x[9])
