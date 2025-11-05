@@ -1,0 +1,24 @@
+def is_palindrome(s):
+    if s[-1::-1] == s:
+        return True
+    return False
+
+s = str(input())
+
+li = []
+string_types = []
+
+for i in range(len(s)-1):
+    for j in range(1, len(s)+1):
+        string_types.append(s[i:j])
+
+for i in range(len(string_types)):
+    if is_palindrome(string_types[i]):
+        li.append(string_types[i])
+
+length = []
+
+for i in range(len(li)):
+    length.append(len(li[i]))
+
+print(max(length))
