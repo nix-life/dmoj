@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int starplayer = 0;
+		for(int i = 0; i < count; i++) {
+			int goal = sc.nextInt();
+			int foul = sc.nextInt();
+			int score = goal * 5 - foul * 3;
+			if(score > 40 ) {
+				starplayer ++;
+			}
+		}
+		if(starplayer == count) {
+			System.out.println(starplayer + "+");
+		}
+		else {
+			System.out.println(starplayer);
+		}
+		sc.close();
+	}
+}
