@@ -1,0 +1,36 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    public static void main(String[] args) throws IOException {
+    	int v = readInt();
+    	char[] x = next().toCharArray();
+    	int a = 0;
+    	int b = 0;
+    	for (int i = 0; i < v; i++) if (x[i] == 'A') a++; else if (x[i] == 'B') b++;
+    	if (a>b) System.out.println("A");
+    	if (a<b) System.out.println("B");
+    	if (a==b) System.out.println("Tie");
+    }
+    static String next() throws IOException {
+        while (st == null || !st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong() throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter() throws IOException {
+        return next().charAt(0);
+    }
+    static String readLine() throws IOException {
+        return br.readLine().trim();
+    }
+}
