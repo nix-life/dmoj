@@ -1,0 +1,37 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    public static void main(String[] args) throws IOException {
+    	int x = readInt();
+    	int y = readInt();
+    	int z = readInt();
+    	if (x+y+z!=180) System.out.println("Error");
+    	if (x+y+z==180) {
+    		if (x==y && y==z) System.out.println("Equilateral");
+        	if (x==y && x!=z || x==z && x!=y || y==z && y!=x) System.out.println("Isosceles");
+        	if (x!=y && x!=z && y!=z) System.out.println("Scalene");
+    	}
+    }
+    static String next() throws IOException {
+        while (st == null || !st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong() throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter() throws IOException {
+        return next().charAt(0);
+    }
+    static String readLine() throws IOException {
+        return br.readLine().trim();
+    }
+}
