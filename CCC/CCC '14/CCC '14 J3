@@ -1,0 +1,24 @@
+import java.util.*;
+import java.util.ArrayList;
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int count = sc.nextInt();
+    int[] A = new int[count];
+    int[] D = new int[count];
+    int aS = 100;
+    int dS = 100;
+    for (int i = 0; i < count; i++) {
+      A[i] = sc.nextInt();
+      D[i] = sc.nextInt();
+      if (A[i] > D[i]) {
+        dS -= A[i];
+      } else if (D[i] > A[i]) {
+        aS -= D[i];
+      } else {
+      }
+    }
+    System.out.println(aS);
+    System.out.println(dS);
+  }
+}
