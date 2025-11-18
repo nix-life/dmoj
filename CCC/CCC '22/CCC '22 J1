@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int R = sc.nextInt();
+		int S = sc.nextInt();
+		int T = 8 * R + 3 * S;
+				System.out.println(T - 28);
+		sc.close();
+	}
+
+}
