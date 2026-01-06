@@ -1,0 +1,98 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        int n = readInt();
+        int m = readInt();
+
+        char[] x = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+
+        for (int i = 0; i < n; i++) {
+            char[] y = next().toCharArray();
+            int[] occ = new int[26];
+
+            for (int j = 0; j < m; j++) {
+                for (int z = 0; z < 26; z++) {
+                    if (y[j] == x[z]) {
+                        occ[z]++;
+                    }
+                }
+            }
+
+            int[] f = new int[m];
+
+            for (int j = 0; j < m; j++) {
+                for (int z = 0; z < 26; z++) {
+                    if (y[j] == x[z]) {
+                        f[j] = occ[z];
+                    }
+                }
+            }
+
+            boolean flag = false;
+            if (f[0] == 1) {
+                for (int j = 1; j < m; j++) {
+                    if (j % 2 == 0) {
+                        if (f[j] != 1) {
+                            flag = true;
+                            System.out.println("F");
+                            break;
+                        }
+                        continue;
+                    } else {
+                        if (f[j] == 1) {
+                            flag = true;
+                            System.out.println("F");
+                            break;
+                        }
+                        continue;
+                    }
+                }
+            } else {
+                for (int j = 1; j < m; j++) {
+                    if (j % 2 == 0) {
+                        if (f[j] == 1) {
+                            flag = true;
+                            System.out.println("F");
+                            break;
+                        }
+                        continue;
+                    } else {
+                        if (f[j] != 1) {
+                            flag = true;
+                            System.out.println("F");
+                            break;
+                        }
+                        continue;
+                    }
+                }
+            }
+
+            if (!flag) System.out.println("T");
+        }
+        
+    } static String next () throws IOException {
+        while (st == null || ! st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong () throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt () throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble () throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter () throws IOException {
+        return next().charAt(0);
+    }  
+    static String readLine () throws IOException {
+        return br.readLine().trim();
+    }
+}
