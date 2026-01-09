@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+
+    long long value;
+    long long oddCount = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> value;
+        oddCount += (value & 1LL);
+    }
+
+    long long evenCount = static_cast<long long>(n) - oddCount;
+
+    bool stevenWins;
+    if (n % 2 == 1) {
+        stevenWins = true;
+    } else {
+        stevenWins = (evenCount >= oddCount - 1);
+    }
+
+    cout << (stevenWins ? "Steven" : "Todd") << '\n';
+    return 0;
+}
