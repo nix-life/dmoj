@@ -1,0 +1,84 @@
+#include <algorithm>
+#include <iostream>
+#include <limits>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, m;
+    cin >> n >> m;
+
+    vector<long long> lights(n);
+    vector<long long> friends(m);
+
+    for (int i = 0; i < n; i++) cin >> lights[i];
+    for (int j = 0; j < m; j++) cin >> friends[j];
+
+    sort(lights.begin(), lights.end());
+    sort(friends.begin(), friends.end());
+
+    const long long INF = numeric_limits<long long>::max() / 4;
+
+    vector<int> prevLightIdx(m, -1);
+    vector<long long> nextLightPos(m, INF);
+
+    int lightPtr = -1;
+    for (int j = 0; j < m; j++) {
+        while (lightPtr + 1 < n && lights[lightPtr + 1] < friends[j]) lightPtr++;
+        prevLightIdx[j] = lightPtr;
+        if (lightPtr + 1 < n) nextLightPos[j] = lights[lightPtr + 1];
+    }
+
+    vector<int> firstAfterIdx(n, m);
+    vector<int> lastBeforeCount(n, 0);
+    int pLower = 0;
+    int pUpper = 0;
+    for (int i = 0; i < n; i++) {
+        while (pLower < m && friends[pLower] < lights[i]) pLower++;
+        lastBeforeCount[i] = pLower;
+        while (pUpper < m && friends[pUpper] <= lights[i]) pUpper++;
+        firstAfterIdx[i] = pUpper;
+    }
+
+    vector<long long> dp(m + 1, INF);
+    dp[0] = 0;
+
+    int act = 0;
+    long long bestActivated = INF;
+
+    long long bestGap = INF;
+    int curPrev = -2;
+
+    for (int j = 0; j < m; j++) {
+        while (act < m && nextLightPos[act] <= friends[j]) {
+            bestActivated = min(bestActivated, dp[act] - friends[act]);
+            act++;
+        }
+        if (bestActivated < INF) dp[j + 1] = min(dp[j + 1], friends[j] + bestActivated);
+
+        int pl = prevLightIdx[j];
+
+        if (pl >= 0) {
+            int i0 = firstAfterIdx[pl];
+            if (i0 <= j) dp[j + 1] = min(dp[j + 1], dp[i0] + (friends[j] - lights[pl]));
+        }
+
+        if (pl != curPrev) {
+            bestGap = INF;
+            curPrev = pl;
+        }
+        bestGap = min(bestGap, dp[j] - friends[j]);
+
+        int nr = pl + 1;
+        if (0 <= nr && nr < n && lastBeforeCount[nr] == j + 1) {
+            dp[j + 1] = min(dp[j + 1], lights[nr] + bestGap);
+        }
+    }
+
+    cout << dp[m] << '\n';
+    return 0;
+}
