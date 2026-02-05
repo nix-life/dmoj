@@ -1,0 +1,23 @@
+import bisect
+
+g = int(input())
+p = int(input())
+
+available = list(range(1, g + 1))
+
+total = 0
+for _ in range(p):
+    plane = int(input())
+
+    pos = bisect.bisect_right(available, plane)
+    
+    if pos == 0:
+        for _ in range(p - total - 1):
+            input()
+        break
+    
+    gate = available[pos - 1]
+    available.pop(pos - 1)
+    total += 1
+
+print(total)
