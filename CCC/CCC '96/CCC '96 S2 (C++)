@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+// Subtract a single digit from a number represented as a string
+string subtractDigit(string num, int digit) {
+    int borrow = digit;
+    int i = num.length() - 1;
+    
+    while (i >= 0 && borrow > 0) {
+        int current = num[i] - '0';
+        if (current >= borrow) {
+            num[i] = '0' + (current - borrow);
+            borrow = 0;
+        } else {
+            num[i] = '0' + (current + 10 - borrow);
+            borrow = 1;
+        }
+        i--;
+    }
+    
+    size_t start = num.find_first_not_of('0');
+    if (start == string::npos) {
+        return "0";
+    }
+    return num.substr(start);
+}
+
+int main() {
+    int n;
+    cin >> n;
+    
+    for (int i = 0; i < n; i++) {
+        string num_str;
+        cin >> num_str;
+        string original = num_str;
+        
+        cout << num_str << endl;
+
+        while (num_str.length() > 2) {
+            int units_digit = num_str[num_str.length() - 1] - '0';
+            string shortened = num_str.substr(0, num_str.length() - 1);
+            
+            num_str = subtractDigit(shortened, units_digit);
+            
+            cout << num_str << endl;
+        }
+        
+        int final_num = stoi(num_str);
+        if (final_num % 11 == 0) {
+            cout << "The number " << original << " is divisible by 11." << endl;
+        } else {
+            cout << "The number " << original << " is not divisible by 11." << endl;
+        }
+        
+        if (i < n - 1) {
+            cout << endl;
+        }
+    }
+    
+    return 0;
+}
