@@ -1,0 +1,18 @@
+n = int(input())
+
+x = []
+
+for i in range(n):
+    f = int(input())
+
+    if (f != 0):
+        x.append(f)
+    else:
+        x.pop()
+
+sum = 0
+
+for i in x:
+    sum += i
+
+print(sum)
