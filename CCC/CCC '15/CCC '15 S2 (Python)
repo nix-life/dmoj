@@ -1,0 +1,28 @@
+j = int(input())
+a = int(input())
+
+jerseys = {}
+for i in range(1, j + 1):
+    jerseys[i] = input().strip()
+
+total = 0
+
+for _ in range(a):
+    size, num = input().split()
+    num = int(num)
+    
+    if num in jerseys:
+        jersey_size = jerseys[num]
+
+        acceptable = False
+        if size == "S" and jersey_size in ["S", "M", "L"]:
+            acceptable = True
+        elif size == "M" and jersey_size in ["M", "L"]:
+            acceptable = True
+        elif size == "L" and jersey_size == "L":
+            acceptable = True
+        
+        if acceptable:
+            total += 1
+            del jerseys[num]
+print(total)
