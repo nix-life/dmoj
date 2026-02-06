@@ -1,0 +1,18 @@
+n = int(input())
+m = int(input())
+
+friends = list(range(1, n + 1))
+
+for i in range(m):
+    k = int(input())
+    
+    new_friends = []
+    for i in range(len(friends)):
+        position = i + 1
+        if position % k != 0:
+            new_friends.append(friends[i])
+    
+    friends = new_friends
+
+for friend in friends:
+    print(friend)
