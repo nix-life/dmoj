@@ -1,0 +1,30 @@
+a = input()
+b = input()
+
+if len(a) != len(b):
+    print("N")
+else:
+    from collections import Counter
+    
+    count_a = Counter(a)
+    count_b = Counter(b)
+    
+    asterisks = count_b.get('*', 0)
+    if '*' in count_b:
+        del count_b['*']
+
+    wildcards_needed = 0
+    for char in count_a:
+        if count_a[char] > count_b.get(char, 0):
+            wildcards_needed += count_a[char] - count_b.get(char, 0)
+
+    for char in count_b:
+        if count_b[char] > count_a.get(char, 0):
+            wildcards_needed = float('inf')
+            break
+    
+    # Check if wildcards match
+    if wildcards_needed == asterisks:
+        print("A")
+    else:
+        print("N")
