@@ -1,0 +1,19 @@
+n = input()
+x = int(n)+1 # so that you don't print out initial number
+n = str(x)
+
+f = []
+for i in range(len(n)):
+    f.append(n[i])
+
+while True:
+    if len(set(f)) == len(f):
+        print(n)
+        break
+
+    x += 1
+    n = str(x)
+
+    f = []
+    for i in range(len(n)):
+        f.append(n[i])
