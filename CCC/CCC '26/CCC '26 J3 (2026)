@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// R > G, G > B, B > R
+
+int main() {
+    string a, b;
+    cin >> a >> b;
+
+    int a1 = 0, b1 = 0;
+    int i = 0, j = 0;
+
+    while (i < a.size() && j < b.size()) {
+        char x = a[i];
+        char y = b[j];
+
+        if (x == y) {
+            a1++;
+            b1++;
+            i++;
+            j++;
+        }
+        else if ((x == 'R' && y == 'G') ||
+                 (x == 'G' && y == 'B') ||
+                 (x == 'B' && y == 'R')) {
+            a1++;
+            j++;
+        }
+        else {
+            b1++;
+            i++;
+        }
+    }
+
+    a1 += a.size() - i;
+    b1 += b.size() - j;
+
+    cout << a1 << '\n';
+    cout << b1 << '\n';
+
+    return 0;
+}
