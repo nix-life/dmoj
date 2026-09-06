@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+
+    set<pair<int, int>> visited;
+
+    int x = 0, y = 0;
+    int answer = 0;
+
+    visited.insert({x, y});
+
+    for (int i = 0; i < N; i++) {
+        char direction;
+        int distance;
+
+        cin >> direction >> distance;
+
+        for (int j = 0; j < distance; j++) {
+            if (direction == 'N') {
+                y++;
+            }
+            else if (direction == 'S') {
+                y--;
+            }
+            else if (direction == 'E') {
+                x++;
+            }
+            else if (direction == 'W') {
+                x--;
+            }
+            
+            if (visited.count({x, y})) {
+                answer++;
+            }
+            visited.insert({x, y});
+        }
+    }
+
+    cout << answer << endl;
+
+    return 0;
+}
